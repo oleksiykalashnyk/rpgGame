@@ -186,6 +186,7 @@ const
             if (b.hp <= 0) {
                 break;
             }
+            
             attackSword(b);
             a.hp -= b.attack;
             console.log(`${b.name} Ударил нас на ${b.attack} урона`);
@@ -250,11 +251,11 @@ setMonstr.set1();
 // }
 
 //Битва МАГА с Уебаном
-startFigth(wizard, m0);
-console.log("------------------------------")
-console.log("------------------------------")
-console.log("Состояние МАГА после битвы:")
-getHero.getWizard();
+// startFigth(wizard, m0);
+// console.log("------------------------------");
+// console.log("------------------------------");
+// console.log("Состояние МАГА после битвы:");
+// getHero.getWizard();
 
 
 // //Битва ЛУЧНИКА с Уебаном
