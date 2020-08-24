@@ -138,6 +138,10 @@ const
 
     //Да начнёться битва!!!
     startFigth = (a, b) => {
+        console.log("Да начнёться БИТВА!!!!");
+        console.log(`${a.name.toUpperCase()} против ${b.name.toUpperCase()}`);
+
+        console.log("------------------------------");
         do {
             let randomForFigth = getRandomInt();
             randomForFigth /= 100;
@@ -210,6 +214,8 @@ const
     };
 
 
+
+//Генерируем героев
 setHero.setArcher();
 setHero.setWarrior();
 setHero.setWizard();
@@ -217,34 +223,50 @@ setHero.setWizard();
 setMonstr.set0();
 setMonstr.set1();
 
-attackSword(archer);
-attackSword(wizard);
-attackSword(warrior);
-console.log("------------------------------");
 
-attackMagic(archer);
-attackMagic(wizard);
-attackMagic(warrior);
-console.log("------------------------------");
 
-attackBow(archer);
-attackBow(wizard);
-attackBow(warrior);
-console.log("------------------------------");
 
-attackSword(m0);
-attackSword(m1);
-console.log("------------------------------");
 
-// let x = [];
-// for (let i = 0; i <= 99; i++) {
+//Провека атаки для баланса
+// {
+//     attackSword(archer);
+//     attackSword(wizard);
 //     attackSword(warrior);
-//     x[i] = warrior.attack;
+//     console.log("------------------------------");
+
+//     attackMagic(archer);
+//     attackMagic(wizard);
+//     attackMagic(warrior);
+//     console.log("------------------------------");
+
+//     attackBow(archer);
+//     attackBow(wizard);
+//     attackBow(warrior);
+//     console.log("------------------------------");
+
+//     attackSword(m0);
+//     attackSword(m1);
+//     console.log("------------------------------");
 // }
-// x.sort();
-// console.log(x);
+
+//Битва МАГА с Уебаном
+startFigth(wizard, m0);
+console.log("------------------------------")
+console.log("------------------------------")
+console.log("Состояние МАГА после битвы:")
+getHero.getWizard();
 
 
+// //Битва ЛУЧНИКА с Уебаном
+// startFigth(archer, m0);
+// console.log("------------------------------")
+// console.log("------------------------------")
+// console.log("Состояние ЛУЧНИКА после битвы:")
+// getHero.getArcher();
 
-//startFigth(archer, m0);
-//startFigth(wizard,m1);
+// //Битва ВОИНА с Властелином Пипца
+// startFigth(warrior, m1);
+// console.log("------------------------------")
+// console.log("------------------------------")
+// console.log("Состояние ВОИНА после битвы:")
+// getHero.getWarrior();
