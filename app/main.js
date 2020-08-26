@@ -81,21 +81,21 @@ const
     attackSword = (a) => {
         let random = getRandomInt();
         a.attack = (a.power * (random / 100)) - (a.agility / (random * 100));
-        console.log(a.name + " ударил мечём на " + a.attack + " урона");
+        // console.log(a.name + " ударил мечём на " + a.attack + " урона");
     },
 
     //Вычисляем атаку Луком!!!
     attackBow = (a) => {
         let random = getRandomInt();
         a.attack = (a.agility * (random / 100)) - (a.power / (random * 100));
-        console.log(a.name + " пустил стрелу на " + a.attack + " урона");
+        // console.log(a.name + " пустил стрелу на " + a.attack + " урона");
     },
 
     //Вычисляем атаку Волшебством!!!
     attackMagic = (a) => {
         let random = getRandomInt();
         a.attack = a.magic * (random / 100);
-        console.log(a.name + " использовал заклятие  на " + a.attack + " урона");
+        // console.log(a.name + " использовал заклятие  на " + a.attack + " урона");
     },
 
 
@@ -147,6 +147,8 @@ const
             randomForFigth /= 100;
             console.log("Счастливое число = " + randomForFigth + " твоё счастливое число = " + a.luck);
 
+            //Атака первого участника битвы
+
             if (a.type == "archer") {
                 attackBow(a);
             }
@@ -183,12 +185,49 @@ const
 
             console.log(`Наресенно уронна ${a.attack}`);
             console.log(`У ${b.name}а осталось ${b.hp} ХП и ${b.armor} брони`);
+
             if (b.hp <= 0) {
                 break;
             }
             
-            attackSword(b);
-            a.hp -= b.attack;
+
+            //Атака второго участника битвы
+            if (b.type == "archer") {
+                attackBow(b);
+            }
+            if (b.type == "wizard") {
+                attackMagic(b);
+            }
+            if (b.type == "warrior") {
+                attackSword(b);
+            }
+            
+
+            if (randomForFigth >= b.luck) {
+                if (a.armor > 0) {
+                    let countArmor = a.armor - b.attack;
+                    if (countArmor < 0) {
+                        a.armor -= b.attack;
+                        a.hp += countArmor;
+                        console.log(`Тебе не повезло ты ударил в броню ${b.attack} и снёс всю броню!!! Поскольку брони было мало для такого урона был нанесён дополнительный урон в ХП ${(-1)*countArmor}`);
+                        a.armor = 0;
+                    } else {
+                        a.armor -= b.attack;
+                        console.log(`Тебе не повезло ты ударил в броню ${b.attack}`);
+                    }
+
+                } else {
+                    console.log(`Тебе повезло у ${a.name}а нет брони и ударил сквозь броню ${b.attack}`);
+                    a.hp -= b.attack;
+                }
+            } else {
+                console.log(`Тебе повезло ты ударил сквозь броню ${b.attack}`);
+                a.hp -= b.attack;
+            }
+
+           
+
+
             console.log(`${b.name} Ударил нас на ${b.attack} урона`);
             console.log(`У тебя осталось ${a.hp} ХП`);
             console.log("------------------------------");
