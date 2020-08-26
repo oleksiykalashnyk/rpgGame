@@ -81,21 +81,21 @@ const
     attackSword = (a) => {
         let random = getRandomInt();
         a.attack = (a.power * (random / 100)) - (a.agility / (random * 100));
-        // console.log(a.name + " ударил мечём на " + a.attack + " урона");
+        console.log(a.name + " ударил мечём на " + a.attack + " урона");
     },
 
     //Вычисляем атаку Луком!!!
     attackBow = (a) => {
         let random = getRandomInt();
         a.attack = (a.agility * (random / 100)) - (a.power / (random * 100));
-        // console.log(a.name + " пустил стрелу на " + a.attack + " урона");
+        console.log(a.name + " пустил стрелу на " + a.attack + " урона");
     },
 
     //Вычисляем атаку Волшебством!!!
     attackMagic = (a) => {
         let random = getRandomInt();
         a.attack = a.magic * (random / 100);
-        // console.log(a.name + " использовал заклятие  на " + a.attack + " урона");
+        console.log(a.name + " использовал заклятие  на " + a.attack + " урона");
     },
 
 
@@ -116,7 +116,7 @@ const
     setMonstr = {
         set0: () => {
             m0.name = "Уебан";
-            m0.type = "monster";
+            m0.type = "warrior";
             m0.hp = 150;
             m0.armor = 100;
             m0.agility = 20;
@@ -126,7 +126,7 @@ const
         },
         set1: () => {
             m1.name = "Властелин Пипца";
-            m1.type = "monster";
+            m1.type = "warrior";
             m1.hp = 350;
             m1.armor = 0;
             m1.agility = 25;
@@ -142,6 +142,7 @@ const
         console.log(`${a.name.toUpperCase()} против ${b.name.toUpperCase()}`);
 
         console.log("------------------------------");
+
         do {
             let randomForFigth = getRandomInt();
             randomForFigth /= 100;
@@ -159,7 +160,7 @@ const
                 attackSword(a);
             }
 
-            console.log(`Ты атакуешь ${b.name} у которого ${b.hp}  и ${b.armor} брони`);
+            console.log(`Ты атакуешь ${b.name} у которого ${b.hp} ХП и ${b.armor} брони`);
 
             if (randomForFigth >= a.luck) {
                 if (b.armor > 0) {
@@ -189,7 +190,7 @@ const
             if (b.hp <= 0) {
                 break;
             }
-            
+
 
             //Атака второго участника битвы
             if (b.type == "archer") {
@@ -201,7 +202,7 @@ const
             if (b.type == "warrior") {
                 attackSword(b);
             }
-            
+
 
             if (randomForFigth >= b.luck) {
                 if (a.armor > 0) {
@@ -225,7 +226,7 @@ const
                 a.hp -= b.attack;
             }
 
-           
+
 
 
             console.log(`${b.name} Ударил нас на ${b.attack} урона`);
@@ -265,9 +266,7 @@ setMonstr.set1();
 
 
 
-
-
-//Провека атаки для баланса
+// Провека атаки для баланса
 // {
 //     attackSword(archer);
 //     attackSword(wizard);
